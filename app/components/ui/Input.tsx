@@ -15,6 +15,7 @@ const Input = ({ label, pressInput, ...props} :Input) => {
     return (
         <View style={styles.inputWrapper}>
             <Text style={[styles.label, globalStyles.h4,]}>{label}</Text>
+
             <TextInput
                 style={[styles.input, globalStyles.h4,  multiline && styles.multiline]}
                 inputAccessoryViewID={id}
