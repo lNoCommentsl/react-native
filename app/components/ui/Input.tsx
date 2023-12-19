@@ -36,7 +36,7 @@ const Input = ({ label, pressInput, ...props} :Input) => {
 
 export {Input};
 
-const styles = StyleSheet.create(
+const styles= StyleSheet.create(
     {
         label: {
             paddingBottom: 5,
