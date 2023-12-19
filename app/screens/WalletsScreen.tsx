@@ -6,8 +6,7 @@ import {globalStyles} from "../assets/styles/globalStyles";
 import Btn from "../components/ui/Button";
 
 export const WalletsScreen = () => {
-    const {walletLists, setWalletItem} = useTabContext()
-    console.log(walletLists)
+    const {walletLists, setWalletListsItem} = useTabContext()
     return <Layout>
         <Text style={globalStyles.h1}>
             Wallets Screen Screen Test

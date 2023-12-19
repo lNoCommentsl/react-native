@@ -110,6 +110,10 @@ const globalStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    linkText:{
+        textDecorationLine: 'underline',
+        color: '#115dd5'
+    }
 })
 
 

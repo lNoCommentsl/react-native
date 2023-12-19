@@ -6,14 +6,20 @@ import {BlurView} from 'expo-blur';
 import {BalanceScreen} from "../screens/BalanceScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
 import {WalletsScreen} from "../screens/WalletsScreen";
-import {Feather, MaterialIcons, FontAwesome, Entypo} from '@expo/vector-icons';
+import {Entypo, Feather, FontAwesome, MaterialIcons} from '@expo/vector-icons';
 import {SecondNavigation} from "./SecondNavigation";
+import {LoginNavigation} from "./LoginNavigation";
 import {colors, fonts, globalStyles, tab} from "../assets/styles/globalStyles";
+import {useTabContext} from "../context/context";
 
 const Tabs = createBottomTabNavigator();
 
 
 export const Navigation = () => {
+    const {isUserLogin} = useTabContext();
+    console.log(isUserLogin);
+    false
+
     function getIconColor() {
         const isFocused = useIsFocused();
         const iconColor = isFocused ? colors.black : colors.gray;
@@ -21,7 +27,7 @@ export const Navigation = () => {
     }
 
     return <NavigationContainer>
-        <Tabs.Navigator
+        {!isUserLogin ? <LoginNavigation/> : <Tabs.Navigator
             screenOptions={{
                 headerShown: false,
                 tabBarLabelStyle: {
@@ -59,6 +65,15 @@ export const Navigation = () => {
                          })}
 
             />
+            <Tabs.Screen name="Wallets" component={WalletsScreen}
+                         options={{
+                             tabBarIcon: (focused) => {
+                                 const iconColor = getIconColor();
+                                 return <Entypo name="wallet" size={20}
+                                                color={iconColor}/>
+                             }
+                         }}
+            />
             <Tabs.Screen name="Profile" component={ProfileScreen}
                          options={{
                              tabBarIcon: () => {
@@ -69,16 +84,8 @@ export const Navigation = () => {
                          }}
             />
 
-            <Tabs.Screen name="Wallets" component={WalletsScreen}
-                         options={{
-                             tabBarIcon: (focused) => {
-                                 const iconColor = getIconColor();
-                                 return <Entypo name="wallet" size={20}
-                                                color={iconColor}/>
-                             }
-                         }}
-            />
         </Tabs.Navigator>
+        }
     </NavigationContainer>
 }
 

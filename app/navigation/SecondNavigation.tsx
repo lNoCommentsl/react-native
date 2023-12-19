@@ -7,7 +7,6 @@ import {ProfileScreen} from "../screens/ProfileScreen";
 const Stack = createStackNavigator();
 
 const SecondNavigation = () => {
-    console.log('SecondNavigation')
     return (
         <Stack.Navigator initialRouteName="Home"
         >
